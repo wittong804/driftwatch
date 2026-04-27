@@ -1,0 +1,20 @@
+# driftwatch.toml — Configuration for schema drift detection
+
+# Database connection URL.
+# Supports environment variable expansion: ${DB_URL}
+[database]
+url = "${DB_URL}"
+# schema = "public"  # Optional: restrict to a specific schema
+
+# Path to the directory containing your ORM model definitions.
+# Relative to the location of this config file.
+models_path = "models"
+
+# Tables to exclude from drift detection (e.g. migration tracking tables).
+ignore_tables = [
+    "alembic_version",
+    "django_migrations",
+]
+
+# If true, exit with a non-zero code on any detected drift.
+strict = false
